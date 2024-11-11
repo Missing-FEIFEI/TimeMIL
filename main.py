@@ -66,7 +66,7 @@ def train(trainloader, milnet, criterion, optimizer, epoch,args):
         # window-based random masking
         if args.dropout_patch>0:
             selecy_window_indx = random.sample(range(10),int(args.dropout_patch*10))
-            inteval = int(len(bag_feats)//10)
+            inteval = int(len(bag_feats[1])//10)
             
             for idx in selecy_window_indx:
                 bag_feats[:,idx*inteval:idx*inteval+inteval,:] = torch.randn(1).cuda()
